@@ -36,6 +36,7 @@ spec:
           releaseName: "{{.component}}"
           valueFiles:
           - /apps/argocoins/values-{{.component}}.yaml
+          - /apps/argocoins/values-{{.component}}-{{.nameNormalized}}.yaml
       destination:
         server: "{{.server}}"
         namespace: "appsetcoins"
