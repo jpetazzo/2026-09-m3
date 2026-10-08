@@ -17,3 +17,7 @@ spec:
       - /apps/argocoins/values-hasher.yaml
     path: charts/generic
     repoURL: https://github.com/jpetazzo/2026-09-m3.git
+  syncPolicy:
+    automated:
+      enabled: true
+
