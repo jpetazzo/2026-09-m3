@@ -5,7 +5,6 @@ metadata:
   labels:
     app: purple
   name: purple
-  namespace: fluxdemo
 spec:
   replicas: 2
   selector:
@@ -27,7 +26,6 @@ metadata:
     app: purple
     owner: jp
   name: purple
-  namespace: fluxdemo
 spec:
   ports:
   - port: 80
