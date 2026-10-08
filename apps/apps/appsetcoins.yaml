@@ -24,7 +24,7 @@ spec:
               chart: generic
   template:
     metadata:
-      name: "{{.component}}"
+      name: "{{.nameNormalized}}-{{.component}}"
       namespace: argocd
     spec:
       project: default
