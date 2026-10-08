@@ -6,7 +6,7 @@ metadata:
     app: purple
   name: purple
 spec:
-  replicas: 8
+  replicas: 3
   selector:
     matchLabels:
       app: purple
