@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  namespace: argocd
+  name: appsetcoins
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - component: hasher
+      - component: redis
+      - component: rng
+      - component: webui
+      - component: worker
+  template:
+    metadata:
+      name: "{{.component}}"
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/jpetazzo/2026-09-m3.git"
+        targetRevision: main
+        path: charts/generic
+        helm:
+          releaseName: "{{.component}}"
+          valueFiles:
+          - /apps/argocoins/values-{{.component}}.yaml
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: "appsetcoins"
