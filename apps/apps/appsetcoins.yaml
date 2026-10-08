@@ -10,10 +10,15 @@ spec:
   - list:
       elements:
       - component: hasher
+        chart: generic
       - component: redis
+        chart: generic
       - component: rng
+        chart: generic
       - component: webui
+        chart: generic
       - component: worker
+        chart: generic
   template:
     metadata:
       name: "{{.component}}"
@@ -23,7 +28,7 @@ spec:
       source:
         repoURL: "https://github.com/jpetazzo/2026-09-m3.git"
         targetRevision: main
-        path: charts/generic
+        path: charts/{{.chart}}
         helm:
           releaseName: "{{.component}}"
           valueFiles:
