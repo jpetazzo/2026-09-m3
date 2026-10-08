@@ -7,19 +7,21 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - clusters: {}
-  - list:
-      elements:
-      - component: hasher
-        chart: generic
-      - component: redis
-        chart: generic
-      - component: rng
-        chart: generic
-      - component: webui
-        chart: generic
-      - component: worker
-        chart: generic
+  - matrix:
+      generators:
+        - clusters: {}
+        - list:
+            elements:
+            - component: hasher
+              chart: generic
+            - component: redis
+              chart: generic
+            - component: rng
+              chart: generic
+            - component: webui
+              chart: generic
+            - component: worker
+              chart: generic
   template:
     metadata:
       name: "{{.component}}"
