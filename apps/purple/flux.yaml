@@ -1,4 +1,17 @@
 ---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: purple
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    commit: 0f66e1aa0e645989cd092f656ca5c739461db545
+  secretRef:
+    name: flux-system
+  url: ssh://git@github.com/jpetazzo/2026-09-m3
+---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
@@ -10,6 +23,6 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: purple
   targetNamespace: fluxdemo
 
