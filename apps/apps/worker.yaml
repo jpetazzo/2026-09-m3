@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/hydrate: normal
+  name: dockercoins-worker
+  namespace: argocd
+spec:
+  destination:
+    namespace: argodemo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      releaseName: worker
+      valueFiles:
+      - /apps/argocoins/values-worker.yaml
+    path: charts/generic
+    repoURL: https://github.com/jpetazzo/2026-09-m3.git

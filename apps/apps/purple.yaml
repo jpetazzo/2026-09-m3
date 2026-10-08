@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/hydrate: normal
+  name: purple
+  namespace: argocd
+spec:
+  destination:
+    namespace: argodemo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/purple
+    repoURL: https://github.com/jpetazzo/2026-09-m3.git
+  syncPolicy:
+    automated:
+      enabled: true
+    syncOptions:
+    - CreateNamespace=true
+
