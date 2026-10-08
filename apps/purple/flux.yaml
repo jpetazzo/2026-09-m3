@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  path: ./apps/purple
+  path: ./apps/purple/manifests
   prune: true
   sourceRef:
     kind: GitRepository
