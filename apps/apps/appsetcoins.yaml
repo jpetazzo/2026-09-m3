@@ -33,6 +33,7 @@ spec:
         targetRevision: main
         path: charts/{{.chart}}
         helm:
+          ignoreMissingValueFiles: true
           releaseName: "{{.component}}"
           valueFiles:
           - /apps/argocoins/values-{{.component}}.yaml
