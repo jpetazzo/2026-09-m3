@@ -31,3 +31,6 @@ spec:
       destination:
         server: "https://kubernetes.default.svc"
         namespace: "appsetcoins"
+      syncPolicy:
+        automated:
+          enabled: true
