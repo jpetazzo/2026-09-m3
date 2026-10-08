@@ -7,6 +7,7 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
+  - cluster: {}
   - list:
       elements:
       - component: hasher
@@ -34,7 +35,7 @@ spec:
           valueFiles:
           - /apps/argocoins/values-{{.component}}.yaml
       destination:
-        server: "https://kubernetes.default.svc"
+        server: "{{.server}}"
         namespace: "appsetcoins"
       syncPolicy:
         automated:
